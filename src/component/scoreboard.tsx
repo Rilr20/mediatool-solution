@@ -1,3 +1,4 @@
+import { Table, Tbody, Th, Thead, Tr, Td, Box } from '@northlight/ui';
 import React, { useEffect, useState } from 'react'
 
 export default function Scoreboard(props: any) {
@@ -6,9 +7,7 @@ export default function Scoreboard(props: any) {
     getHighscore();
   }, [props])
 
-  // console.log(props);
   function getHighscore() {
-    // console.log(props.scores);
     let highscore: any[] = []
     props.scores.score.forEach((score: { userId: number; score: number; }) => {
       if (highscore[score.userId] == null) {
@@ -22,12 +21,27 @@ export default function Scoreboard(props: any) {
   }
 
   return (
-    <div>
+    <Box w="80%" m="auto">
+      <Table>
+        <Thead>
+          <Tr>
+            <Th fontWeight="bold"> Placement</Th>
+            <Th fontWeight="bold"> Name</Th>
+            <Th fontWeight="bold"> Score</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
       {
         highscores.map(function (score, i) {
-          return <div key={i}>{i + 1} {score.name} {score.score}</div>
+          return <Tr key={i}> 
+            <Td>#{i + 1}</Td>
+            <Td>{score.name}</Td>
+            <Td> {score.score}</Td>
+          </Tr>
         })
       }
-    </div>
+        </Tbody>
+      </Table>
+    </Box>
   )
 }

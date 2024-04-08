@@ -46,7 +46,7 @@ export default function App() {
                     label="Import excel file here"
                 />
                 <VStack align="left">
-                    <Box>
+                    <Box pb={5}>
                         <Scoreboard scores={scoresState} users={users} />
                     </Box>
                     <Box>
