@@ -14,6 +14,7 @@ import { ExcelDropzone, ExcelRow } from './excel-dropzone.jsx'
 import Scoreboard from './component/scoreboard.js'
 import scores from './scores.js' // use as default scores
 import users from './users.js'
+import Scoreform from './component/scoreform.js'
 
 interface ExternalLinkProps {
     href: string,
@@ -23,17 +24,16 @@ interface ExternalLinkProps {
 const ExternalLink = ({ href, children }: ExternalLinkProps) => <Link href={href} isExternal sx={{ color: palette.blue['500'], textDecoration: 'underline' }}>{children}</Link>
 
 export default function App() {
-    const [scoresState, setScoresState] = useState(scores);
-    const [updated, setUpdated] = useState(false);
+    const [scoresState, setScoresState] = useState(scores)
+    const [updated, setUpdated] = useState(false)
+
     useEffect(() => {
-        console.log("updated");
-        setScoresState(scores);
+        setScoresState(scores)
         setUpdated(false)
         // Doesn't detect changes in objects so updated was created and use for useEffect instead.
     }, [updated]);
     function handleSheetData(data: ExcelRow[]) {
         scores.initScores(data)
-        console.log(scores);
         setUpdated(true)
     }
 
@@ -48,6 +48,9 @@ export default function App() {
                 <VStack align="left">
                     <Box>
                         <Scoreboard scores={scoresState} users={users} />
+                    </Box>
+                    <Box>
+                        <Scoreform setUpdated={setUpdated} />
                     </Box>
                     <Box>
                         <H2>Initial site</H2>
