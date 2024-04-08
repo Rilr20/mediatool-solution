@@ -23,7 +23,7 @@ const users = {
     return this.user.find(user => user._id == userId)?.name;
   },
   getUserId: function(name: string) {
-    return this.user.find(user => user.name == name)?._id == undefined ? 0 : this.user.find(user => user.name == name)?._id;
+    return this.user.find(user => user.name == name)?._id == undefined ? 0 : this.user.find(user => user.name == name)._id;
   }
 }
 export default users

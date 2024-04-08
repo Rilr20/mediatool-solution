@@ -31,7 +31,6 @@ const scores = {
         });
     },
     addScore: function (name: string, score: number) {
-        console.log("added");
 
         let userId = users.getUserId(name) == 0 ? users.addUser(name) : users.getUserId(name)
 
