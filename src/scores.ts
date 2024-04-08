@@ -24,14 +24,21 @@ const scores = {
     { userId: 1, score: 163 },
     { userId: 3, score: 701 },],
     initScores: function (datalist: ExcelRow[]) {
-        users.clearUsers(),
-            datalist.forEach(row => {
-                this.addScore(row.name, row.score);
-            });
+        users.clearUsers()
+        scores.clearScores()
+        datalist.forEach(row => {
+            this.addScore(row.name, row.score);
+        });
     },
     addScore: function (name: string, score: number) {
+        console.log("added");
+
         let userId = users.getUserId(name) == 0 ? users.addUser(name) : users.getUserId(name)
+
         this.score.push({ userId: userId, score: score })
+    },
+    clearScores: function() {
+        this.score = []
     }
 }
 
