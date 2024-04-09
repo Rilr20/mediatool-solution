@@ -19,7 +19,7 @@ const users = {
       return 0
     }
   },
-  getUser: function(userId: number) {
+  getUserName: function(userId: number) {
     return this.user.find(user => user._id == userId)?.name;
   },
   getUserId: function(name: string) {
