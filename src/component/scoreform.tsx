@@ -27,6 +27,7 @@ export default function Scoreform(props) {
               if (item.name !== "") {
                 scores.addScore(item.name, Number(item.score))
               }
+              setForm([{ name: "", score: "" }])
             });
           } else {
             scores.addScore(e.name, Number(e.score))
